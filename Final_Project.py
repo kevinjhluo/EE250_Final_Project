@@ -3,6 +3,7 @@ import Adafruit_GPIO.SPI as SPI
 import Adafruit_MCP3008
 import numpy as np
 from time import sleep
+import pyaudio
 
 SPI_PORT   = 0
 SPI_DEVICE = 0
@@ -60,9 +61,9 @@ def decode_morse(taps):
 
 if __name__ == '__main__':
     while True:
-        signal = mcp.read_adc(1)
-        taps = detect_taps(signal)
+        frames = record_audio(duration=1)  # Record audio for 1 second
+        signal = np.frombuffer(b''.join(frames), dtype=np.int16)
+        sound_sensor_val = mcp.read_adc(1)  # Read sound sensor input from the MCP3008
+        taps = detect_taps(signal, sound_sensor_val)
         message = decode_morse(taps)
         print(f'Decoded message: {message}')
-
-        
