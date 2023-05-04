@@ -61,5 +61,8 @@ def decode_morse(taps):
 if __name__ == '__main__':
     while True:
         signal = mcp.read_adc(1)
-        print(signal)
+        taps = detect_taps(signal)
+        message = decode_morse(taps)
+        print(f'Decoded message: {message}')
+
         
