@@ -37,29 +37,26 @@ def main():
     
     # Start encoding the message in Morse code
     print ('Press the message you wish to encode')
-    message = ''
     start_time = time.time()
-    last_press_time = time.time()
     while time.time() - start_time < 5:
-        button_state = grovepi.digitalRead(button)
-        if button_state == 1:
-            current_time = time.time()
-            if current_time - last_press_time > 1:
-                break
-            else:
-                message += '.'
-        else:
-            current_time = time.time()
-            if current_time - last_press_time > 1:
-                break
-            else:
-                message += '-'
-        last_press_time = current_time
+        message += grovepi.digitalRead(button)
+        # if button_state == 1:
+        #     current_time = time.time()
+        #     if current_time - last_press_time > 1:
+        #         break
+        #     else:
+        #         message += '.'
+        # else:
+        #     current_time = time.time()
+        #     if current_time - last_press_time > 1:
+        #         break
+        #     else:
+        #         message += '-'
+        # last_press_time = current_time
     
-    
-    # Decode the Morse code message and print it
-    decoded_message = decode_morse_code(morse_code)
-    print('The decoded message is:', decoded_message)
+    print (message)
+    #decoded_message = decode_morse_code(message)
+    #print('The decoded message is:', decoded_message)
 
 # Call the main function
 if __name__ == '__main__':
