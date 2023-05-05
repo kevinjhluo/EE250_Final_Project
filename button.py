@@ -14,15 +14,6 @@ button = 4
 # Set the pin mode for the button
 grovepi.pinMode(button,"INPUT")
 
-# Define the function to encode a message in Morse code
-def encode_morse_code(message):
-    morse_code = ''
-    for letter in message:
-        if letter != ' ':
-            morse_code += MORSE_CODE_DICT[letter.upper()] + ' '
-        else:
-            morse_code += ' '
-    return morse_code
 
 # Define the function to decode a message from Morse code
 def decode_morse_code(morse_code):
@@ -45,9 +36,11 @@ def main():
         time.sleep(0.1)
     
     # Start encoding the message in Morse code
+    print ('Press the message you wish to encode')
     message = ''
+    start_time = time.time()
     last_press_time = time.time()
-    while True:
+    while time.time() - start_time < 5:
         button_state = grovepi.digitalRead(button)
         if button_state == 1:
             current_time = time.time()
@@ -63,9 +56,6 @@ def main():
                 message += '-'
         last_press_time = current_time
     
-    # Encode the message in Morse code and print it
-    morse_code = encode_morse_code(message)
-    print('The Morse code message is:', morse_code)
     
     # Decode the Morse code message and print it
     decoded_message = decode_morse_code(morse_code)
