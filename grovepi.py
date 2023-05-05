@@ -58,4 +58,7 @@ if __name__ == '__main__':
     grovepi.pinMode(sound_sensor, "INPUT")
     while True:
         print('Recording...')
-        signal = grovepi.analog
+        signal = record_audio(duration=1)  # Record audio for 1 second
+        taps = detect_taps(signal)
+        message = decode_morse(taps)
+        print(f'Decoded message: {message}')
