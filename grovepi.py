@@ -54,11 +54,14 @@ def decode_morse(taps):
     return message
 
 if __name__ == '__main__':
-    sound_sensor = 0  # Connect the GrovePi sound sensor to port A0
+    sound_sensor = 1  # Connect the GrovePi sound sensor to port A0
     grovepi.pinMode(sound_sensor, "INPUT")
+
     while True:
-        print('Recording...')
-        signal = record_audio(duration=1)  # Record audio for 1 second
-        taps = detect_taps(signal)
-        message = decode_morse(taps)
-        print(f'Decoded message: {message}')
+        sensor_value = grovepi.analogRead(sound_sensor)
+        print (sensor_value)
+        # print('Recording...')
+        # signal = record_audio(duration=1)  # Record audio for 1 second
+        # taps = detect_taps(signal)
+        # message = decode_morse(taps)
+        # print(f'Decoded message: {message}')
