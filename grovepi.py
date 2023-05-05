@@ -55,7 +55,7 @@ def decode_morse(taps):
 
 if __name__ == '__main__':
     sound_sensor = 1  # Connect the GrovePi sound sensor to port A0
-    grovepi.pinMode(sound_sensor, "INPUT")
+
 
     while True:
         sensor_value = grovepi.analogRead(sound_sensor)
