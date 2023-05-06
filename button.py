@@ -1,6 +1,6 @@
 import time
 import grovepi
-
+import paho.mqtt.client as mqtt
 
 # Define the Morse code dictionary
 MORSE_CODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 
@@ -74,6 +74,14 @@ def main():
     morse_code = decode_morse_code(message)
     print('The decoded message is:', morse_code)
 
+def on_connect(client, userdata, flags, rc):
+    print("Connected to server (i.e., broker) with result code "+str(rc))
+
 # Call the main function
 if __name__ == '__main__':
     main()
+    client = mqtt.Client()
+    client.on_connect = on_connect
+    client.connect(host="test.mosquitto.org", port=1883, keepalive=60)
+    client.publish("button/morse_code", morse_code)
+
