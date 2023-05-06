@@ -18,7 +18,7 @@ grovepi.pinMode(button,"INPUT")
 
 # Define the function to decode a message from Morse code
 def decode_morse_code(message):
-    #decoded_message = ''
+    decoded_message = ''
     morse_code = ''
     num_of_ones = 0
     num_of_zeros = 0
