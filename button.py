@@ -40,9 +40,6 @@ def decode_morse_code(message):
 def main():
     # Wait for the button to be pressed
     message = ''
-    print('Press the button to start encoding a message in Morse code.')
-    while grovepi.digitalRead(button) == 0:
-        time.sleep(0.1)
     
     # Start encoding the message in Morse code
     print ('Press the message you wish to encode')
