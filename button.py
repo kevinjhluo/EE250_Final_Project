@@ -30,9 +30,13 @@ def decode_morse_code(message):
                 morse_code += '.' 
             num_of_ones = 0 
     print(morse_code)
-    for code in morse_code.split(" "):
-        letter = list(MORSE_CODE_DICT.keys())[list(MORSE_CODE_DICT.values()).index(code)]
-        decoded_message += letter
+    morse_code_words = morse_code.split("  ") 
+    for word in morse_code_words:
+        morse_code_letters = word.split()
+        for code in morse_code_letters:
+            for letter, code in MORSE_CODE_DICT.items():
+                if code == morse_code:
+                    decoded_message += letter
     return decoded_message
 
 # Define the main function
