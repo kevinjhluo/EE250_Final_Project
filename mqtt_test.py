@@ -1,5 +1,5 @@
 import paho.mqtt.client as mqtt
-morse_code = "morse code"
+from button import morse_code
 
 def on_connect(client, userdata, flags, rc):
     print("Connected to server (i.e., broker) with result code "+str(rc))

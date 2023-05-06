@@ -37,13 +37,13 @@ def decode_morse_code(message):
                 morse_code += '.' 
             num_of_ones = 0 
     print(morse_code)
-    # morse_letters = morse_code.strip().split()
-    # print (morse_letters)
-    # for code in morse_letters:
-    #     for letter, morse in MORSE_CODE_DICT.items():
-    #         if code == morse:
-    #             decoded_message += letter
-    return morse_code
+    morse_letters = morse_code.strip().split()
+    print (morse_letters)
+    for code in morse_letters:
+        for letter, morse in MORSE_CODE_DICT.items():
+            if code == morse:
+                decoded_message += letter
+    return decoded_message
 
 # Define the main function
 def main():
