@@ -48,7 +48,7 @@ def main():
     # Start encoding the message in Morse code
     print ('Press the message you wish to encode')
     start_time = time.time()
-    while time.time() - start_time < 5:
+    while time.time() - start_time < 10:
         message += str(grovepi.digitalRead(button))
         time.sleep(0.2)
         # if button_state == 1:
