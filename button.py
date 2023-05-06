@@ -1,6 +1,7 @@
 import time
 import grovepi
 
+
 # Define the Morse code dictionary
 MORSE_CODE_DICT = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 
                    'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 
@@ -17,7 +18,7 @@ grovepi.pinMode(button,"INPUT")
 
 # Define the function to decode a message from Morse code
 def decode_morse_code(message):
-    decoded_message = ''
+    #decoded_message = ''
     morse_code = ''
     num_of_ones = 0
     num_of_zeros = 0
@@ -36,13 +37,13 @@ def decode_morse_code(message):
                 morse_code += '.' 
             num_of_ones = 0 
     print(morse_code)
-    morse_letters = morse_code.strip().split()
-    print (morse_letters)
-    for code in morse_letters:
-        for letter, morse in MORSE_CODE_DICT.items():
-            if code == morse:
-                decoded_message += letter
-    return decoded_message
+    # morse_letters = morse_code.strip().split()
+    # print (morse_letters)
+    # for code in morse_letters:
+    #     for letter, morse in MORSE_CODE_DICT.items():
+    #         if code == morse:
+    #             decoded_message += letter
+    return morse_code
 
 # Define the main function
 def main():
