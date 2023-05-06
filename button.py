@@ -17,16 +17,17 @@ grovepi.pinMode(button,"INPUT")
 
 # Define the function to decode a message from Morse code
 def decode_morse_code(message):
+    message = ''
     decoded_message = ''
     num_of_ones = 0
     for char in message:
         if char == '1':
             num_of_ones += 1
-        else: num_of_ones = 0
-        if num_of_ones >= 3:
-            decoded_message += '-'
-        elif num_of_ones == 1:
-            decoded_message += '.'  
+            if num_of_ones >= 3:
+                decoded_message += '-'
+            elif num_of_ones == 1:
+                decoded_message += '.' 
+        else: num_of_ones = 0 
     print(decoded_message)
     for letter, code in MORSE_CODE_DICT.items():
         if code == decoded_message:
