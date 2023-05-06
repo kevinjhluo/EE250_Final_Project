@@ -62,8 +62,8 @@ def main():
         # last_press_time = current_time
     
     print (message)
-    #decoded_message = decode_morse_code(message)
-    #print('The decoded message is:', decoded_message)
+    decoded_message = decode_morse_code(message)
+    print('The decoded message is:', decoded_message)
 
 # Call the main function
 if __name__ == '__main__':
