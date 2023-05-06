@@ -36,6 +36,7 @@ def decode_morse_code(message):
             elif num_of_ones >= 1 and num_of_ones <3:
                 morse_code += '.' 
             num_of_ones = 0 
+    print(morse_code)
     morse_letters = morse_code.strip().split()
     for code in morse_letters:
         for letter, morse in MORSE_CODE_DICT.items():
@@ -55,7 +56,6 @@ if __name__ == '__main__':
     while time.time() - start_time < 10:
         message += str(grovepi.digitalRead(button))
         time.sleep(0.2)
-    print (message)
     morse_code = decode_morse_code(message)
     print('The decoded message is:', morse_code)
 
