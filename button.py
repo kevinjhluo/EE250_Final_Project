@@ -83,5 +83,5 @@ if __name__ == '__main__':
     client = mqtt.Client()
     client.on_connect = on_connect
     client.connect(host="test.mosquitto.org", port=1883, keepalive=60)
-    client.publish("button/morse_code", morse_code)
+    client.publish("button/morse_code", decode_morse_code)
 
