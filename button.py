@@ -24,6 +24,7 @@ def decode_morse_code(message):
     for char in message:
         if char == '1':
             num_of_ones += 1
+            num_of_zeros = 0
         else:
             num_of_zeros += 1
             if num_of_zeros >= 4:
