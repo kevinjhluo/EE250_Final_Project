@@ -26,7 +26,7 @@ def decode_morse_code(message):
         else:
             if num_of_ones >= 3:
                 morse_code += '-'
-            elif num_of_ones == 1:
+            elif num_of_ones >= 1 and num_of_ones <3:
                 morse_code += '.' 
             num_of_ones = 0 
     print(morse_code)
