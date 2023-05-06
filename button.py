@@ -39,8 +39,8 @@ def decode_morse_code(message):
     morse_letters = morse_code.strip().split()
     print (morse_letters)
     for code in morse_letters:
-        for letter, code in MORSE_CODE_DICT.items():
-            if code == morse_code:
+        for letter, morse in MORSE_CODE_DICT.items():
+            if code == morse:
                 decoded_message += letter
     return decoded_message
 
