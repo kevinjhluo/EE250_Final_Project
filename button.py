@@ -17,7 +17,7 @@ grovepi.pinMode(button,"INPUT")
 
 # Define the function to decode a message from Morse code
 def decode_morse_code(message):
-    message = ''
+    final_message = ''
     decoded_message = ''
     num_of_ones = 0
     for char in message:
@@ -31,8 +31,8 @@ def decode_morse_code(message):
     print(decoded_message)
     for letter, code in MORSE_CODE_DICT.items():
         if code == decoded_message:
-            message += letter
-    return message
+            final_message += letter
+    return final_message
 
 # Define the main function
 def main():
