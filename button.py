@@ -45,43 +45,24 @@ def decode_morse_code(message):
                 decoded_message += letter
     return decoded_message
 
-# Define the main function
-def main():
-    # Wait for the button to be pressed
-    message = ''
-    
-    # Start encoding the message in Morse code
-    print ('Press the message you wish to encode')
-    start_time = time.time()
-    while time.time() - start_time < 10:
-        message += str(grovepi.digitalRead(button))
-        time.sleep(0.2)
-        # if button_state == 1:
-        #     current_time = time.time()
-        #     if current_time - last_press_time > 1:
-        #         break
-        #     else:
-        #         message += '.'
-        # else:
-        #     current_time = time.time()
-        #     if current_time - last_press_time > 1:
-        #         break
-        #     else:
-        #         message += '-'
-        # last_press_time = current_time
-    
-    print (message)
-    morse_code = decode_morse_code(message)
-    print('The decoded message is:', morse_code)
-
+   
 def on_connect(client, userdata, flags, rc):
     print("Connected to server (i.e., broker) with result code "+str(rc))
 
 # Call the main function
 if __name__ == '__main__':
-    main()
+    message = ''
+    print ('Press the message you wish to encode')
+    start_time = time.time()
+    while time.time() - start_time < 10:
+        message += str(grovepi.digitalRead(button))
+        time.sleep(0.2)
+    print (message)
+    morse_code = decode_morse_code(message)
+    print('The decoded message is:', morse_code)
+
     client = mqtt.Client()
     client.on_connect = on_connect
     client.connect(host="test.mosquitto.org", port=1883, keepalive=60)
-    client.publish("button/morse_code", decode_morse_code)
+    client.publish("button/morse_code", f"{morse_code}")
 
