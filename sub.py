@@ -1,4 +1,7 @@
 import paho.mqtt.client as mqtt
+from flask import Flask, render_template
+
+app = Flask(__name__)
 
 broker_address = "test.mosquitto.org"
 topic = "button/morse_code"
@@ -9,9 +12,18 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     print("Received message: " + str(msg.payload, "utf-8"))
+    global received_message
+    received_message = msg.payload.decode("utf-8")
+    app.jinja_env.globals.update(message=received_message)
+
+def index():
+    # Render the index.html template and pass the received message to it
+    return render_template('index.html', message=received_message)
 
 client = mqtt.Client("pc_subscriber")
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect(host="test.mosquitto.org", port=1883, keepalive=60)
-client.loop_forever()
+
+if __name__ == '__main__':
+    app.run()
