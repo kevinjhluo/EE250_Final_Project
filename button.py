@@ -23,12 +23,11 @@ def decode_morse_code(message):
     for char in message:
         if char == '1':
             num_of_ones += 1
+        else:
             if num_of_ones >= 3:
                 morse_code += '-'
-                num_of_ones = 0
-        else:
-          if num_of_ones == 1:
-            morse_code += '.' 
+            elif num_of_ones == 1:
+                morse_code += '.' 
             num_of_ones = 0 
     print(morse_code)
     for code in morse_code.split():
