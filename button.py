@@ -36,23 +36,11 @@ def decode_morse_code(message):
                 morse_code += '.' 
             num_of_ones = 0 
     print(morse_code)
-    morse_words = morse_code.split(' ')
-    
-    # Loop through each word and translate it to a letter
-    decoded_words = []
-    for morse_word in morse_words:
-        decoded_word = ''
-        # Split the Morse code word into letters
-        morse_letters = morse_word.split(' ')
-        for morse_letter in morse_letters:
-            # Use the dictionary to translate the Morse code letter to a letter
-            decoded_letter = MORSE_CODE_DICT.get(morse_letter)
-            if decoded_letter is not None:
-                decoded_word += decoded_letter
-        decoded_words.append(decoded_word)
-    
-    # Join the decoded words together to form the final message
-    decoded_message = ' '.join(decoded_words)
+    morse_letters = morse_code.strip().split(" ")
+    for code in morse_letters:
+        for letter, code in MORSE_CODE_DICT.items():
+            if code == morse_code:
+                decoded_message += letter
     return decoded_message
 
 # Define the main function
