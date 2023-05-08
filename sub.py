@@ -5,7 +5,6 @@ from flask import Flask, render_template
 app = Flask(__name__)
 @app.route('/')
 def home():
-    # Render the index.html template and pass the received message to it
     return render_template('index.html', message=received_message)
     
 
